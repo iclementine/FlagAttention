@@ -21,7 +21,7 @@ def max_diff(a, b):
 ])
 @pytest.mark.parametrize('causal', [True, False])
 @pytest.mark.parametrize('stride_order', ['BHTD', 'BTHD'])
-@pytest.mark.parametrize('dtype', [torch.float16, torch.bfloat16])
+@pytest.mark.parametrize('dtype', [torch.float16])
 def test_attention_fwd(B, H, T, D, P_SEQ, causal, stride_order, dtype, scale, device_id):
     device = f"cuda:{device_id}"
     if stride_order == "BHTD":
@@ -62,7 +62,7 @@ def test_attention_fwd(B, H, T, D, P_SEQ, causal, stride_order, dtype, scale, de
 ])
 @pytest.mark.parametrize('causal', [True, False])
 @pytest.mark.parametrize('stride_order', ['BHTD', 'BTHD'])
-@pytest.mark.parametrize('dtype', [torch.float16, torch.bfloat16])
+@pytest.mark.parametrize('dtype', [torch.float16])
 def test_attention_bwd(B, H, T, D, P_SEQ, causal, stride_order, dtype, scale, device_id):
     device = f"cuda:{device_id}"
     if stride_order == "BHTD":

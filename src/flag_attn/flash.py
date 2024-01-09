@@ -291,7 +291,9 @@ def _fwd_kernel(
         p = tl.math.exp2(s * qk_scale - m_i_new[:, None] * qk_scale)
 
         # -- scale and update acc: acc *= alpha[:, None]--
-        acc *= alpha[:, None]
+        acc_scale = l_i * 0 + alpha
+        acc *= acc_scale[:, None]
+        # acc *= alpha[:, None]
         acc += tl.dot(p.to(input_dtype), v)
 
         # -- update m_i and l_i --

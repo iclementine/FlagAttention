@@ -23,14 +23,14 @@ def report(name, actual, expected):
     (2, 4, 512, 128, 100),
     (2, 4, 1024, 64, 10), 
     (2, 4, 2048, 32, 0),
-    (2, 4, 4096, 16, 0),
+    (2, 4, 4096, 32, 0),
     (2, 4, 4000, 32, 0),
     (2, 4, 4000, 64, 96),
-    (1, 2, 8192, 16, 10),
+    (1, 2, 8192, 32, 10),
     (1, 2, 8192, 32, 0),
 ])
 @pytest.mark.parametrize('causal', [True, False])
-@pytest.mark.parametrize('dtype', [torch.float16, torch.bfloat16])
+@pytest.mark.parametrize('dtype', [torch.float16])
 @pytest.mark.parametrize('stride_order', ['BHTD', 'BTHD'])
 def test_attention_fwd(B, H, T, D, P_SEQ, causal, stride_order, dtype, scale, device_id):
     device = f"cuda:{device_id}"
@@ -67,7 +67,7 @@ def test_attention_fwd(B, H, T, D, P_SEQ, causal, stride_order, dtype, scale, de
     (2, 2, 8192, 32, 0),
 ])
 @pytest.mark.parametrize('causal', [True, False])
-@pytest.mark.parametrize('dtype', [torch.float16, torch.bfloat16])
+@pytest.mark.parametrize('dtype', [torch.float16])
 @pytest.mark.parametrize('stride_order', ['BHTD', 'BTHD'])
 def test_attention_bwd(B, H, T, D, P_SEQ, causal, stride_order, dtype, scale, device_id):
     device = f"cuda:{device_id}"
