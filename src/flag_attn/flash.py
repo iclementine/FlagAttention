@@ -6,7 +6,7 @@ from flag_attn.total import _total_attention_kernel
 
 __all__ = ["attention"]
 
-# Add some comments
+# Add some comments here
 
 # --------------------------- public API ---------------------------
 class FlashAttention(torch.autograd.Function):
